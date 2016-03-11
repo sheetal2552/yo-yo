@@ -17,7 +17,7 @@ A tiny library for building modular UI components using DOM diffing and ES6 tagg
 
 `yo-yo` is a modular UI framework, meaning nearly 100% of it's source code is requiring other modules (see [`index.js`](index.js)). The goals of `yo-yo` are to choose a good set of default dependencies, document how to use them all together in one place, and use small enough dependencies that you can include a copy of `yo-yo` in standalone UI component modules and publish them to npm.
 
-You can start by simply doing `require('yo-yo')` but as your app grows will most likely want to choose different tradeoffs (add or remove dependencies), and `yo-yo` is designed to let you do that without rewriting all of your code, forcing you to use certain dependencies, or write your code in a certain style.
+You can start by simply doing `require('yo-yo')` but as your app grows will most likely want to choose different tradeoffs (add or remove dependencies), and `yo-yo` is designed to let you do that without rewriting all of your code due to API changes, forcing you to use certain dependencies, or making you adopt new coding conventions.
 
 In this way `yo-yo` is similar to the modular frameworks [mississippi](https://www.npmjs.com/package/mississippi), [http-framework](https://www.npmjs.com/package/http-framework) and [mercury](https://www.npmjs.com/package/mercury).
 
