@@ -29,7 +29,7 @@ The `yo-yo` API is very simple and only has two functions.
 
 Returns the `yo` function. There is also a method on `yo` called `yo.update`.
 
-### yo<pre>`template`</pre>
+### yo\`template\`
 
 `yo` is a function designed to be used with [tagged template literals](#tagged-template-literals). If your template produces a string containing an HTML element, the `yo` function will take it and produce a new DOM element that you can insert into the DOM.
 
