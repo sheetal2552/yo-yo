@@ -1,0 +1,25 @@
+{
+  "name": "yo-yo",
+  "version": "0.0.0",
+  "description": "A tiny library for building modular UI components using DOM diffing and ES6 tagged template literals",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maxogden/yo-yo.git"
+  },
+  "keywords": [],
+  "author": "Max Ogden",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/maxogden/yo-yo/issues"
+  },
+  "homepage": "https://github.com/maxogden/yo-yo#readme",
+  "dependencies": {
+    "bel": "shama/bel#yo-yo",
+    "hyperx": "^2.0.2",
+    "morphdom": "^1.1.2"
+  }
+}
