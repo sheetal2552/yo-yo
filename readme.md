@@ -1,14 +1,13 @@
 # yo-yo.js
 
-
 A tiny library for building modular UI components using DOM diffing and ES6 tagged template literals. Uses the "yo-yo" data binding pattern: data down, actions up.
 
 ## Features
 
-- Build your own framework: small modules that you can swap out to pick your own tradeoffs
+- Build your own framework: [small modules that you can swap out](#modules-that-work-well-with-yo-yo) to pick your own tradeoffs
 - Uses features available in browsers today instead of inventing new syntax/APIs
-- Designed for template literals, a templating feature built in to JS
-- Uses a default DOM diffing strategy based on the real DOM, not a virtual DOM
+- Designed for [template literals](#tagged-template-literals), a templating feature built in to JS
+- Uses a [default DOM diffing](#morphdom) strategy based on the real DOM, not a virtual DOM
 - Compatible with vanilla DOM elements and vanilla JS data structures
 - Doesn't require hundreds of megabytes of devDependencies to build
 - 4kb minified + gzipped (6 times smaller than React), small enough for UI components to include as a dependency
@@ -17,7 +16,7 @@ A tiny library for building modular UI components using DOM diffing and ES6 tagg
 
 `yo-yo` is a modular UI framework, meaning nearly 100% of it's source code is requiring other modules (see [`index.js`](index.js)). The goals of `yo-yo` are to choose a good set of default dependencies, document how to use them all together in one place, and use small enough dependencies that you can include a copy of `yo-yo` in standalone UI component modules and publish them to npm.
 
-You can start by simply doing `require('yo-yo')` but as your app grows will most likely want to choose different tradeoffs (add or remove dependencies), and `yo-yo` is designed to let you do that without rewriting all of your code due to API changes, forcing you to use certain dependencies, or making you adopt new coding conventions.
+You can start by simply doing `require('yo-yo')` but as your app grows will most likely want to choose different tradeoffs ([add or remove dependencies](#modules-that-work-well-with-yo-yo), and `yo-yo` is designed to let you do that without rewriting all of your code due to API changes, forcing you to use certain dependencies, or making you adopt new coding conventions.
 
 In this way `yo-yo` is similar to the modular frameworks [mississippi](https://www.npmjs.com/package/mississippi), [http-framework](https://www.npmjs.com/package/http-framework) and [mercury](https://www.npmjs.com/package/mercury).
 
@@ -35,7 +34,7 @@ Returns the `yo` function. There is also a method on `yo` called `yo.update`.
 
 ### yo.update(targetElement, newElement)
 
-Efficiently updates the content of an element by diffing and morphing a new element onto an existing target element. The two elements should have the same 'shape', as the diff between `newElement` will replace nodes in `targetElement`. `targetElement` will get efficiently updated with only the new DOM nodes from `newElement`, and `newElement` can be discarded afterwards.
+Efficiently updates the content of an element by [diffing and morphing](#morphdom) a new element onto an existing target element. The two elements should have the same 'shape', as the diff between `newElement` will replace nodes in `targetElement`. `targetElement` will get efficiently updated with only the new DOM nodes from `newElement`, and `newElement` can be discarded afterwards.
 
 ## Examples
 
