@@ -14,7 +14,7 @@ A tiny library for building modular UI components using DOM diffing and ES6 tagg
 
 ## About
 
-`yo-yo` is a modular UI framework, meaning nearly 100% of it's source code is requiring other modules (see [`index.js`](index.js)). The goals of `yo-yo` are to choose a good set of default dependencies, document how to use them all together in one place, and use small enough dependencies that you can include a copy of `yo-yo` in standalone UI component modules and publish them to npm.
+`yo-yo` is a modular UI framework, meaning nearly 100% of its source code is requiring other modules (see [`index.js`](index.js)). The goals of `yo-yo` are to choose a good set of default dependencies, document how to use them all together in one place, and use small enough dependencies that you can include a copy of `yo-yo` in standalone UI component modules and publish them to npm.
 
 You can start by simply doing `require('yo-yo')` but as your app grows will most likely want to choose different tradeoffs ([add or remove dependencies](#modules-that-work-well-with-yo-yo), and `yo-yo` is designed to let you do that without rewriting all of your code due to API changes, forcing you to use certain dependencies, or making you adopt new coding conventions.
 
@@ -109,7 +109,7 @@ When the button is clicked, thanks to `yo.update`, only a single new `<li>` is i
   
 ## Modules that work well with yo-yo
 
-The functionality built in to `yo-yo` cover the same problems as React and JSX, (DOM diffing and templating), using these dependencies of `yo-yo`:
+The functionality built in to `yo-yo` covers the same problems as React and JSX, (DOM diffing and templating), using these dependencies of `yo-yo`:
 
 - [bel](https://npmjs.org/bel)
 - [hyperx](https://npmjs.org/hyperx)
@@ -275,6 +275,6 @@ Running the above sets `app` to an element with this HTML:
 
 ### morphdom
 
-`yo-yo` lets you do two basic things, create an element and update it. When you create an element it simply creates a new DOM element tree using hyperx and its own custom code that uses `document.createElement`.
+`yo-yo` lets you do two basic things: create an element and update it. When you create an element it simply creates a new DOM element tree using hyperx and its own custom code that uses `document.createElement`.
 
 However, when you update an element using `yo.update()` it actually uses a module called [`morphdom`](https://npmjs.org/morphdom) to transform the existing DOM tree to match the new DOM tree while minimizing the number of changes to the existing DOM tree. This is a really similar approach to what `react` and `virtual-dom` do, except `morphdom` does not use a virtual DOM, it simply uses the actual DOM.
