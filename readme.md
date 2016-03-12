@@ -1,6 +1,8 @@
 # yo-yo.js
 
-A tiny library for building modular UI components using DOM diffing and ES6 tagged template literals. Uses the "yo-yo" data binding pattern: data down, actions up. A smaller, unopinionated, composable, un-fancy alternative to React based on [`bel`](https://www.npmjs.com/package/bel) and [morphdom](https://www.npmjs.com/package/morphdom).
+A tiny library for building modular UI components using DOM diffing and ES6 tagged template literals. Uses the "yo-yo" data binding pattern: data down, actions up. A smaller, unopinionated, composable, un-fancy alternative to React based on [bel](https://www.npmjs.com/package/bel) and [morphdom](https://www.npmjs.com/package/morphdom).
+
+![logo](yoyojs.png)
 
 ## Features
 
