@@ -1,6 +1,6 @@
 # yo-yo.js
 
-A tiny library for building modular UI components using DOM diffing and ES6 tagged template literals. Uses the "yo-yo" data binding pattern: data down, actions up.
+A tiny library for building modular UI components using DOM diffing and ES6 tagged template literals. Uses the "yo-yo" data binding pattern: data down, actions up. A smaller, unopinionated, composable, un-fancy alternative to React based on [`bel`](https://www.npmjs.com/package/bel) and [morphdom](https://www.npmjs.com/package/morphdom).
 
 ## Features
 
@@ -111,9 +111,8 @@ When the button is clicked, thanks to `yo.update`, only a single new `<li>` is i
 
 The functionality built in to `yo-yo` covers the same problems as React and JSX, (DOM diffing and templating), using these dependencies of `yo-yo`:
 
-- [bel](https://npmjs.org/bel)
-- [hyperx](https://npmjs.org/hyperx)
-- [morphdom](https://npmjs.org/morphdom)
+- [bel](https://npmjs.org/bel) - creates DOM elements from template strings
+- [morphdom](https://npmjs.org/morphdom) - efficiently morphs DOM elements (without a virtual DOM)
 
 However you might consider these alternatives to the above built-in choices based on your use case:
 
@@ -241,7 +240,7 @@ You could also imagine writing the above function in a more general way using lo
 
 ### hyperx
 
-`yo-yo` uses a module called `hyperx` to turn tagged template arrays into DOM builder data.
+`yo-yo` uses a module called `bel` which in turn uses `hyperx` to turn tagged template arrays into DOM builder data.
 
 For example:
 
