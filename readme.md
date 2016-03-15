@@ -57,6 +57,13 @@ The `opts` object will also get passed to `morphdom`.
 
 ## Examples
 
+Here are some UI modules implemented using `yo-yo`:
+
+- https://github.com/shama/csv-viewer
+- https://github.com/shama/fs-explorer
+
+And here are some simpler examples:
+
 ### Creating a simple list
 
 ```js
