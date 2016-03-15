@@ -16,7 +16,7 @@ A tiny library for building modular UI components using DOM diffing and ES6 tagg
 
 ## About
 
-`yo-yo` is a modular UI framework, meaning nearly 100% of its source code is requiring other modules (see [`index.js`](index.js)). The goals of `yo-yo` are to choose a good set of default dependencies, document how to use them all together in one place, and use small enough dependencies that you can include a copy of `yo-yo` in standalone UI component modules and publish them to npm.
+`yo-yo` is a modular UI framework, meaning there isn't much code in this repository, much of the functionality comes from other modules (see [`index.js`](index.js)). The goals of `yo-yo` are to choose a good set of default dependencies, document how to use them all together in one place, and use small enough dependencies that you can include a copy of `yo-yo` in standalone UI component modules and publish them to npm.
 
 You can start by simply doing `require('yo-yo')` but as your app grows will most likely want to choose different tradeoffs ([add or remove dependencies](#modules-that-work-well-with-yo-yo)), and `yo-yo` is designed to let you do that without rewriting all of your code due to API changes, forcing you to use certain dependencies, or making you adopt new coding conventions.
 
@@ -34,9 +34,26 @@ Returns the `yo` function. There is also a method on `yo` called `yo.update`.
 
 `yo` is a function designed to be used with [tagged template literals](#tagged-template-literals). If your template produces a string containing an HTML element, the `yo` function will take it and produce a new DOM element that you can insert into the DOM.
 
-### yo.update(targetElement, newElement)
+### yo.update(targetElement, newElement, <opts>)
 
-Efficiently updates the content of an element by [diffing and morphing](#morphdom) a new element onto an existing target element. The two elements should have the same 'shape', as the diff between `newElement` will replace nodes in `targetElement`. `targetElement` will get efficiently updated with only the new DOM nodes from `newElement`, and `newElement` can be discarded afterwards.
+Efficiently updates the attributes and content of an element by [diffing and morphing](#morphdom) a new element onto an existing target element. The two elements + their children should have the same 'shape', as the diff between `newElement` will replace nodes in `targetElement`. `targetElement` will get efficiently updated with only the new DOM nodes from `newElement`, and `newElement` can be discarded afterwards.
+
+Note that many properties of a DOM element **are ignored** when elements are updated. [morphdom](#morphdom) only copies the following properties:
+
+- `node.firstChild`
+- `node.tagName`
+- `node.nextSibling`
+- `node.attributes`
+- `node.nodeType`
+- `node.nodeValue`
+
+In addition to these `yo-yo` will copy event attributes (e.g. `onclick`, `onmousedown`) that you set using DOM attributes in your template.
+
+`opts` is optional and has these options:
+
+- `events` - set `false` to disable copying of event attributes. otherwise set to an array of strings, one for each event name you want to whitelist for copying. defaults to our default events
+
+The `opts` object will also get passed to `morphdom`.
 
 ## Examples
 
@@ -109,6 +126,24 @@ Clicking the button three times results in this HTML:
 
 When the button is clicked, thanks to `yo.update`, only a single new `<li>` is inserted into the DOM.
   
+### Updating events
+
+Event handlers starting with `on` that you set via attributes will get updated.
+
+```js
+function a () { console.log('a') }
+function b () { console.log('b') }
+
+var el = yo`<button onclick=${a}>hi</button>`
+el.click() // logs 'a' to console
+
+var newEl = yo`<button onclick=${b}>hi</button>`
+yo.update(el, newEl)
+el.click() // logs 'b' to console
+```
+
+This works because [we explicity copy common event attributes](update-events.js). When `yo.update` is called above, `el` is still the same JavaScript Object instance before and after. The only difference is that `yo.update` will copy any new attributes from `newEl` onto `el`. However, if you add custom properties or events to `newEl` before calling `yo.update`, for example `newEl.addEventListener('foo', handleFoo)`, they will not be copied onto `el`.
+
 ## Modules that work well with yo-yo
 
 The functionality built in to `yo-yo` covers the same problems as React and JSX, (DOM diffing and templating), using these dependencies of `yo-yo`:
@@ -279,3 +314,7 @@ Running the above sets `app` to an element with this HTML:
 `yo-yo` lets you do two basic things: create an element and update it. When you create an element it simply creates a new DOM element tree using hyperx and its own custom code that uses `document.createElement`.
 
 However, when you update an element using `yo.update()` it actually uses a module called [`morphdom`](https://npmjs.org/morphdom) to transform the existing DOM tree to match the new DOM tree while minimizing the number of changes to the existing DOM tree. This is a really similar approach to what `react` and `virtual-dom` do, except `morphdom` does not use a virtual DOM, it simply uses the actual DOM.
+
+## Benchmarks
+
+You can find benchmarks at https://github.com/shama/yo-yo-perf

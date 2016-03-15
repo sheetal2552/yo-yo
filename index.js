@@ -4,6 +4,7 @@ var defaultEvents = require('./update-events.js') // default events to be copied
 
 module.exports = bel
 
+// TODO move this + defaultEvents to a new module once we receive more feedback
 module.exports.update = function (fromNode, toNode, opts) {
   if (!opts) opts = {}
   if (opts.events !== false) {

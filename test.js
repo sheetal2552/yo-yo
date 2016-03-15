@@ -1,3 +1,4 @@
+/*global Event*/
 var test = require('tape')
 var yo = require('./')
 
@@ -17,5 +18,21 @@ test('event attribute gets removed', function (t) {
   var el = yo`<button onclick=${a}>hi</button>`
   el.click()
   yo.update(el, yo`<button>hi</button>`)
+  el.click()
+})
+
+test('custom event listeners and properties are ignored', function (t) {
+  t.plan(3)
+  function a () { t.ok(true, 'called a') }
+  function b () { t.ok(true, 'called b') }
+  function c () { t.notOk(true, 'should not call c') }
+  var el = yo`<button onclick=${a}>hi</button>`
+  el.click()
+  var newEl = yo`<button onclick=${b}>hi</button>`
+  newEl.foo = 999
+  newEl.addEventListener('foobar', c)
+  yo.update(el, newEl)
+  t.equal(el.foo, undefined, 'no el.foo')
+  el.dispatchEvent(new Event('foobar'))
   el.click()
 })
