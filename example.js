@@ -17,7 +17,7 @@ function list (items, onclick) {
 function update () {
   // add a new random number to our list
   numbers.push(Math.random())
-  
+
   // construct a new list and efficiently diff+morph it into the one in the DOM
   var newList = list(numbers, update)
   yo.update(el, newList)
