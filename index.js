@@ -19,8 +19,8 @@ module.exports.update = function (fromNode, toNode, opts) {
       var ev = events[i]
       if (t[ev]) { // if new element has a whitelisted attribute
         f[ev] = t[ev] // update existing element
-      } else if (f[ev]) { // if existing has it but new one doesnt
-        delete f[ev] // remove it from existing
+      } else {
+        f[ev] = undefined // otherwise remove it from existing element
       }
     }
   }
