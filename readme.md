@@ -4,7 +4,7 @@ A tiny library for building modular UI components using [DOM diffing](#morphdom)
 
 ![logo](yoyojs.png)
 
-Getting started is as easy as `var element = yo\`<h1>hello world!</h1>\``
+Getting started is as easy as <pre>var element = yo\`&lt;h1&gt;hello world!&lt;/h1&gt;\`</pre>
 
 ## Features
 
