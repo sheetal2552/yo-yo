@@ -5,8 +5,10 @@ module.exports = bel
 
 module.exports.update = function (fromNode, toNode, opts) {
   if (!opts) opts = {}
-  if (!opts.onBeforeMorphEl) opts.onBeforeMorphEl = copyEvents
-  if (!opts.onBeforeMorphElChildren) opts.onBeforeMorphElChildren = copyEvents
+  if (opts.events !== false) {
+    if (!opts.onBeforeMorphEl) opts.onBeforeMorphEl = copyEvents
+    if (!opts.onBeforeMorphElChildren) opts.onBeforeMorphElChildren = copyEvents
+  }
 
   morphdom(fromNode, toNode, opts)
 
