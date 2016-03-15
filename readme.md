@@ -1,11 +1,14 @@
 # yo-yo.js
 
-A tiny library for building modular UI components using DOM diffing and ES6 tagged template literals. Uses the "yo-yo" data binding pattern: data down, actions up. A smaller, unopinionated, composable, un-fancy alternative to React based on [bel](https://www.npmjs.com/package/bel) and [morphdom](https://www.npmjs.com/package/morphdom).
+A tiny library for building modular UI components using [DOM diffing](#morphdom) and [ES6 tagged template literals]((#tagged-template-literals)), powered by [bel](https://www.npmjs.com/package/bel) and [morphdom](https://www.npmjs.com/package/morphdom) and based on the "yo-yo" data binding pattern: data down, actions up. 
 
 ![logo](yoyojs.png)
 
+Getting started is as easy as `var element = yo\`<h1>hello world!</h1>\``
+
 ## Features
 
+- React-style modular UI components that can efficiently update themselves
 - Build your own framework: [small modules that you can swap out](#modules-that-work-well-with-yo-yo) to pick your own tradeoffs
 - Uses features available in browsers today instead of inventing new syntax/APIs
 - Designed for [template literals](#tagged-template-literals), a templating feature built in to JS
@@ -21,6 +24,12 @@ A tiny library for building modular UI components using DOM diffing and ES6 tagg
 You can start by simply doing `require('yo-yo')` but as your app grows will most likely want to choose different tradeoffs ([add or remove dependencies](#modules-that-work-well-with-yo-yo)), and `yo-yo` is designed to let you do that without rewriting all of your code due to API changes, forcing you to use certain dependencies, or making you adopt new coding conventions.
 
 In this way `yo-yo` is similar to the modular frameworks [mississippi](https://www.npmjs.com/package/mississippi), [http-framework](https://www.npmjs.com/package/http-framework) and [mercury](https://www.npmjs.com/package/mercury).
+
+## Installing
+
+You can get it [from npm](http://npmjs.org/yo-yo): `npm install yo-yo`
+
+To create a standalone copy run `browserify -r yo-yo > yo-yo.js`
 
 ## API
 
