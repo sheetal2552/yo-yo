@@ -1,5 +1,6 @@
 var bel = require('bel') // turns template tag into DOM elements
 var morphdom = require('morphdom') // efficiently diffs + morphs two DOM elements
+var defaultEvents = require('./update-events.js') // default events to be copied when dom elements update
 
 module.exports = bel
 
@@ -16,43 +17,11 @@ module.exports.update = function (fromNode, toNode, opts) {
     var events = opts.events || defaultEvents
     for (var i = 0; i < events.length; i++) {
       var ev = events[i]
-      if (t[ev]) f[ev] = t[ev]
+      if (t[ev]) { // if new element has a whitelisted attribute
+        f[ev] = t[ev] // update existing element
+      } else if (f[ev]) { // if existing has it but new one doesnt
+        delete f[ev] // remove it from existing
+      }
     }
   }
 }
-
-var defaultEvents = [
-  // attribute events (can be set with attributes)
-  'onclick',
-  'ondblclick',
-  'onmousedown',
-  'onmouseup',
-  'onmouseover',
-  'onmousemove',
-  'onmouseout',
-  'ondragstart',
-  'ondrag',
-  'ondragenter',
-  'ondragleave',
-  'ondragover',
-  'ondrop',
-  'ondragend',
-  'onkeydown',
-  'onkeypress',
-  'onkeyup',
-  'onunload',
-  'onabort',
-  'onerror',
-  'onresize',
-  'onscroll',
-  'onselect',
-  'onchange',
-  'onsubmit',
-  'onreset',
-  'onfocus',
-  'onblur',
-  // other common events
-  'oncontextmenu',
-  'onfocusin',
-  'onfocusout'
-]
