@@ -12,14 +12,16 @@ module.exports.update = function (fromNode, toNode, opts) {
 
   morphdom(fromNode, toNode, opts)
 
+  // morphdom only copies attributes. we decided we also wanted to copy events
+  // that can be set via attributes
   function copyEvents (f, t) {
     var events = opts.events || defaultEvents
     for (var i = 0; i < events.length; i++) {
       var ev = events[i]
       if (t[ev]) { // if new element has a whitelisted attribute
         f[ev] = t[ev] // update existing element
-      } else {
-        f[ev] = undefined // otherwise remove it from existing element
+      } else if (f[ev]) { // if existing element has it and new one doesnt
+        f[ev] = undefined // remove it from existing element
       }
     }
   }
