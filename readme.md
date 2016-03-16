@@ -1,6 +1,6 @@
 # yo-yo.js
 
-A tiny library for building modular UI components using [DOM diffing](#morphdom) and [ES6 tagged template literals]((#tagged-template-literals)), powered by [bel](https://www.npmjs.com/package/bel) and [morphdom](https://www.npmjs.com/package/morphdom) and based on the "yo-yo" data binding pattern: data down, actions up. 
+A tiny library for building modular UI components using [DOM diffing](#morphdom) and [ES6 tagged template literals](#tagged-template-literals), powered by [bel](https://www.npmjs.com/package/bel) and [morphdom](https://www.npmjs.com/package/morphdom) and based on the "yo-yo" data binding pattern: data down, actions up. 
 
 ![logo](yoyojs.png)
 
