@@ -174,7 +174,7 @@ However you might consider these alternatives to the above built-in choices base
 - [hyperscript](https://npmjs.com/hyperscript) - alternative to template literals
 - [diffhtml](https://npmjs.com/diffhtml) - alternative to morphdom
 
-There are also UI problems that `yo-yo` does not currently address, but it's easy to use other modules alongside `yo-yo` to create your own framework. We might even add some of these to `yo-yo` in the future:
+There are also UI problems that `yo-yo` does not currently address, such as events. But it's easy to use other modules alongside `yo-yo` to create your own framework. We might even add some of these to `yo-yo` in the future:
 
 ### CSS
 
@@ -185,7 +185,11 @@ There are also UI problems that `yo-yo` does not currently address, but it's eas
 - [sheetify](https://github.com/stackcss/sheetify) - browserify modular css transform
 - plain css files - you don't always have to use a fancy CSS module :)
 
-### State management (E.g. redux)
+### State management
+
+In `yo-yo` state management is left completely up to you. The simplest approach is the "yo-yo" pattern: simply call a callback up until it reaches a parent where you want to handle updates, then `yo.update()` the changes down from there, which keeps the elements isolated. But since you are just working with DOM elements, you can do `yo.update(document.querySelector('.some-other-element'), newelement)` as well.
+
+There are also some other approaches that introduce their own patterns for managing state:
 
 - [store-emitter](https://github.com/sethvincent/store-emitter) - redux-inspired state management library
 - [minidux](https://github.com/freeman-lab/minidux) - mini version of redux
