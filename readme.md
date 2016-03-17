@@ -4,7 +4,9 @@ A tiny library for building modular UI components using [DOM diffing](#morphdom)
 
 ![logo](yoyojs.png)
 
-Getting started is as easy as <pre>var element = yo\`&lt;h1&gt;hello world!&lt;/h1&gt;\`</pre>
+Getting started is as easy as <pre>var element = yo\`&lt;h1&gt;hello world!&lt;/h1&gt;\`</pre>.
+
+[Give yo-yo a spin in your browser on RequireBin](http://requirebin.com/?gist=8371be058c7c0c087ebe).
 
 ## Features
 
