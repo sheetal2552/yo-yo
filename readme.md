@@ -160,7 +160,7 @@ yo.update(el, newEl)
 el.click() // logs 'b' to console
 ```
 
-This works because [we explicity copy common event attributes](update-events.js). When `yo.update` is called above, `el` is still the same JavaScript Object instance before and after. The only difference is that `yo.update` will copy any new attributes from `newEl` onto `el`. However, if you add custom properties or events to `newEl` before calling `yo.update`, for example `newEl.addEventListener('foo', handleFoo)`, they will not be copied onto `el`.
+This works because [we explicitly copy common event attributes](update-events.js). When `yo.update` is called above, `el` is still the same JavaScript Object instance before and after. The only difference is that `yo.update` will copy any new attributes from `newEl` onto `el`. However, if you add custom properties or events to `newEl` before calling `yo.update`, for example `newEl.addEventListener('foo', handleFoo)`, they will not be copied onto `el`.
 
 ## Modules that work well with yo-yo
 
