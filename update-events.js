@@ -28,6 +28,7 @@ module.exports = [
   'onreset',
   'onfocus',
   'onblur',
+  'oninput',
   // other common events
   'oncontextmenu',
   'onfocusin',
