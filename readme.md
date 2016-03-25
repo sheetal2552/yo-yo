@@ -176,6 +176,14 @@ However you might consider these alternatives to the above built-in choices base
 
 There are also UI problems that `yo-yo` does not currently address, such as events. But it's easy to use other modules alongside `yo-yo` to create your own framework. We might even add some of these to `yo-yo` in the future:
 
+### Older Browser Compatibility / Production Performance
+
+If you are targeting browsers that may not support template literals and would
+like to get a performance boost by transforming your `yo-yo` elements into raw
+document calls:
+
+ - [yo-yoify](https://github.com/shama/yo-yoify)
+
 ### CSS
 
 - [dom-css](https://npmjs.org/dom-css) - inline CSS helper
