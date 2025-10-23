@@ -347,6 +347,3 @@ Running the above sets `app` to an element with this HTML:
 
 However, when you update an element using `yo.update()` it actually uses a module called [`morphdom`](https://npmjs.org/morphdom) to transform the existing DOM tree to match the new DOM tree while minimizing the number of changes to the existing DOM tree. This is a really similar approach to what `react` and `virtual-dom` do, except `morphdom` does not use a virtual DOM, it simply uses the actual DOM.
 
-## Benchmarks
-
-You can find benchmarks at https://github.com/shama/yo-yo-perf
